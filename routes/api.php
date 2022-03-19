@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::resource('typeusers', 'App\Http\Controllers\Api\ApitypeusersController');
     Route::post('logout','App\Http\Controllers\Api\LoginController@logout');
 });
+Route::get('getcategoria', 'App\Http\Controllers\Api\ApicategoriasController@getCategoria');     
+
 
 Route::post('login','App\Http\Controllers\Api\LoginController@login');
 Route::post('register','App\Http\Controllers\Api\RegisterController@register');

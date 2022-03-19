@@ -88,5 +88,9 @@ class ApicategoriasController extends ApiController
     public function destroy($id)
     {
         //
+        $categoria = Categoria::findOrfail($id);
+        $categoria->delete();
+        return $this->deletedData();
     }
+    
 }
