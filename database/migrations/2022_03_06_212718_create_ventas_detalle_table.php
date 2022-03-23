@@ -15,12 +15,10 @@ class CreateVentasDetalleTable extends Migration
     {
         Schema::create('ventas_detalle', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('fecha');
-            $table->timestamps();
-            $table->unsignedBigInteger('vendedor_id');
-            $table->foreign('vendedor_id')->references('id')->on('users')->onDelete('cascade');  
-            $table->unsignedBigInteger('cliente_id');
-            $table->foreign('cliente_id')->references('id')->on('users')->onDelete('cascade');  
+            $table->date('cantidad');
+            $table->timestamps();            
+            $table->unsignedBigInteger('producto_id');
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');  
             $table->unsignedBigInteger('venta_id');
             $table->foreign('venta_id')->references('id')->on('ventas')->onDelete('cascade');  
         });

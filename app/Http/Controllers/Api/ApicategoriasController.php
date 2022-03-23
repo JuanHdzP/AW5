@@ -17,7 +17,7 @@ class ApicategoriasController extends ApiController
     {
         //
             $categorias = Categoria::all();
-            return $this->showAll($categorias);
+            return $this->showAll($categorias,200);
     }
 
     /**
@@ -77,6 +77,9 @@ class ApicategoriasController extends ApiController
     public function update(Request $request, $id)
     {
         //
+        $categoria = Categoria::findOrfail($id);
+        $categoria->update($request->all());
+        return $this->showOne($categoria);
     }
 
     /**

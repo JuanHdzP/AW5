@@ -77,6 +77,9 @@ class ApiusersController extends ApiController
     public function update(Request $request, $id)
     {
         //
+        $user = User::findOrfail($id);
+        $user->update($request->all());
+        return $this->showOne($user);
     }
 
     /**
@@ -88,5 +91,8 @@ class ApiusersController extends ApiController
     public function destroy($id)
     {
         //
+        $user = User::findOrfail($id);
+        $user->delete();
+        return $this->deletedData();
     }
 }

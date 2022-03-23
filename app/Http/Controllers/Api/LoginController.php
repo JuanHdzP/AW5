@@ -13,29 +13,29 @@ use App\Models\User;
 class LoginController extends Controller
 {
 
-public function login(Request $request)
-{
-    $data = $request->validate([
-        'email' => 'email|required',
-        'password' => 'required'
-    ]);
-
-    $user = User::where('email',$data['email'])->first();
-    
-    if (!$user ||  !Hash::check($data['password'],$user->password)){
-        return response (['message'=>'Credenciales invalidas'],401);
-    }
-    else
+    public function login(Request $request)
     {
-        $token=$user->createToken('auth-token')->plainTextToken;
-        $response=[
-            'user'=>$user,
-            'token'=>$token,
+        $fields = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = User::where('email', $fields['email'])->first();
+
+        if (!Hash::check($fields['password'], $user->password)) {
+            return response(
+                ['message' => 'Informacion invalida'], 401
+            );
+        }
+
+        $token = $user->createToken('XampleToken')->plainTextToken;
+
+        $response = [
+            'user' => $user,
+            'token' => $token,
         ];
-        return response ($response,200);
+        return response($response, 201);
     }
-    
-}
 
 public function logout(Request $request)
     {

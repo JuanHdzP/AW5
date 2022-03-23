@@ -17,7 +17,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'auth:sanctum'], function () {
+/* Route::group(['middleware' => 'auth:sanctum'], function () {
+ */
     Route::resource('categorias', 'App\Http\Controllers\Api\ApicategoriasController');
     Route::resource('productos', 'App\Http\Controllers\Api\ApiproductosController');
     Route::resource('users', 'App\Http\Controllers\Api\ApiusersController');
@@ -25,8 +26,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::resource('ventasdetalle', 'App\Http\Controllers\Api\ApiventadetalleController');
     Route::resource('typeusers', 'App\Http\Controllers\Api\ApitypeusersController');
     Route::post('logout','App\Http\Controllers\Api\LoginController@logout');
-});
-Route::get('getcategoria', 'App\Http\Controllers\Api\ApicategoriasController@getCategoria');     
+    
+/* });
+ */Route::get('getcategoria', 'App\Http\Controllers\Api\ApicategoriasController@getCategoria');     
 
 
 Route::post('login','App\Http\Controllers\Api\LoginController@login');

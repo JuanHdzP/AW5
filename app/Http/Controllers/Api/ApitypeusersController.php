@@ -77,6 +77,9 @@ class ApitypeusersController extends ApiController
     public function update(Request $request, $id)
     {
         //
+        $typeuser = TypeUser::findOrfail($id);
+        $typeuser->update($request->all());
+        return $this->showOne($typeuser);
     }
 
     /**
@@ -88,5 +91,8 @@ class ApitypeusersController extends ApiController
     public function destroy($id)
     {
         //
+        $typeuser = TypeUser::findOrfail($id);
+        $typeuser->delete();
+        return $this->deletedData();
     }
 }

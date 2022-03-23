@@ -77,6 +77,9 @@ class ApiventasController extends ApiController
     public function update(Request $request, $id)
     {
         //
+        $venta = Venta::findOrfail($id);
+        $venta->update($request->all());
+        return $this->showOne($venta);
     }
 
     /**
@@ -88,5 +91,8 @@ class ApiventasController extends ApiController
     public function destroy($id)
     {
         //
+        $venta = Venta::findOrfail($id);
+        $venta->delete();
+        return $this->deletedData();
     }
 }

@@ -77,6 +77,9 @@ class ApiproductosController extends ApiController
     public function update(Request $request, $id)
     {
         //
+        $producto = Producto::findOrfail($id);
+        $producto->update($request->all());
+        return $this->showOne($producto);
     }
 
     /**
@@ -88,5 +91,8 @@ class ApiproductosController extends ApiController
     public function destroy($id)
     {
         //
+        $producto = Producto::findOrfail($id);
+        $producto->delete();
+        return $this->deletedData();
     }
 }
