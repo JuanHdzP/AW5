@@ -22,7 +22,7 @@ trait ApiResponser
 		return $this->successResponse(['data'=> $instance, 'code' => $code], $code);
 	}
 
-	protected function deletedData($code = 201){
+	protected function deletedData($code = 204){
 		return $this->successResponse(['data'=> 'Registro Eliminado', 'code' => $code], $code);
 	}
 }
